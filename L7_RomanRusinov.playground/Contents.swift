@@ -60,3 +60,43 @@ catch buyError.noMoney {
 }
 
 
+// 2-е задание
+
+enum buyError1: Error {
+    case noMoney
+    case notFound
+}
+
+struct jacket1 {
+    var name: String
+    var price: Double
+}
+
+class buy1 {
+    
+    var money = 0.0
+    
+    var jackets = [
+        "Black jacket": jacket1(name: "Black jacket", price: 1999.00),
+        "Black winter jacket": jacket1(name: "Black winter jacket", price: 5999.00),
+        "Red jacket": jacket1(name: "Red jacket", price: 2500.00)
+    ]
+    
+    func onlinebuyng1(name: String) -> (String?, buyError1?) {
+        guard let jacket = jackets[name] else {
+            return (nil, buyError1.notFound)
+        }
+        guard jacket.price <= money else {
+            return (nil, buyError1.noMoney)
+        }
+        print("Your order \(jacket.name) has been paid")
+        return ("Your order \(jacket.name) has been paid", nil)
+        
+}
+
+}
+
+var customer1 = buy1()
+
+customer1.money = 2600.00
+customer1.onlinebuyng1(name: "Red jacket")
