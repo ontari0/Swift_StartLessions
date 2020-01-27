@@ -1,5 +1,7 @@
 import UIKit
 
+//Еще в процессе
+
 enum buyError: Error {
     case noMoney
     case anotherPaymentMethod
